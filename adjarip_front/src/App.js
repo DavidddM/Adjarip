@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import SearchBar from "./components/SearchBar";
 import SearchResult from "./components/SearchResult";
@@ -13,6 +13,10 @@ function App() {
     const [movieSeasonEps, setMovieSeasonEps] = useState([]);
     const [showComp, setShowComp] = useState([]);
     const [url, setUrl] = useState([]);
+
+    useEffect(() => {
+        document.title = "Adjarip"
+     }, []);
 
     const onSearchHandler = async (value) => {
         const keyword = encodeURI(value);
