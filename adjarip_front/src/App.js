@@ -18,7 +18,7 @@ function App() {
         const keyword = encodeURI(value);
         try {
             const response = await axios.get(
-                `http://192.168.0.105:5000/search_film/${keyword}`
+                `http://localhost:5000/search_film/${keyword}`
             );
             console.log(response.data);
             setSearchResult(response.data.slice(0, 8));
@@ -31,7 +31,7 @@ function App() {
     const movieClickHandler = async (id) => {
         try {
             const response = await axios.get(
-                `http://192.168.0.105:5000/get_seasons_count/${id}`
+                `http://localhost:5000/get_seasons_count/${id}`
             );
             console.log(response.data);
             setMovieId(id);
@@ -45,7 +45,7 @@ function App() {
     const seasonClickHandler = async (id) => {
         try {
             const response = await axios.get(
-                `http://192.168.0.105:5000/get_season_episodes/${movieId}/${id}`
+                `http://localhost:5000/get_season_episodes/${movieId}/${id}`
             );
             console.log(response.data);
             setMovieSeasonEps(response.data);

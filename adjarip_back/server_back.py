@@ -53,5 +53,4 @@ def get_season_episodes(movieId, seasonId):
 
     return json.dumps(return_data)
 
-
 app.run(host='0.0.0.0')
