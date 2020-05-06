@@ -17,7 +17,7 @@ def search_film(keyword):
     resp = requests.get(url)
     return_data = []
     for d in resp.json()['data']:
-        title = (d['secondaryName'] or d['primaryName']) +f"({d['year']})"
+        title = (d['secondaryName'] or d['primaryName']) +f" ({d['year']})"
         return_data.append({
             'id': d['id'],
             'title': title,
