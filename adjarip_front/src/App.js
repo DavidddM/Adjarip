@@ -5,8 +5,14 @@ import SearchResult from "./components/SearchResult";
 import SeasonSelector from "./components/SeasonSelector";
 import Player from "./components/Player";
 import axios from "axios";
+import conf from "./conf";
+import settings from "./settings";
 
 function App() {
+    const APIURL = settings.debug
+        ? conf.development.API_BASE_URL
+        : conf.production.API_BASE_URL;
+
     const [searchResult, setSearchResult] = useState([]);
     const [movieId, setMovieId] = useState([]);
     const [movieSeasonsCount, setMovieSeasonsCount] = useState([]);
@@ -15,14 +21,14 @@ function App() {
     const [url, setUrl] = useState([]);
 
     useEffect(() => {
-        document.title = "Adjarip"
-     }, []);
+        document.title = "Adjarip";
+    }, []);
 
     const onSearchHandler = async (value) => {
         const keyword = encodeURI(value);
         try {
             const response = await axios.get(
-                `http://157.245.245.234:5000/search_film/${keyword}`
+                `${APIURL}search_film/${keyword}`
             );
             console.log(response.data);
             setSearchResult(response.data.slice(0, 8));
@@ -35,7 +41,7 @@ function App() {
     const movieClickHandler = async (id) => {
         try {
             const response = await axios.get(
-                `http://157.245.245.234:5000/get_seasons_count/${id}`
+                `${APIURL}get_seasons_count/${id}`
             );
             console.log(response.data);
             setMovieId(id);
@@ -49,7 +55,7 @@ function App() {
     const seasonClickHandler = async (id) => {
         try {
             const response = await axios.get(
-                `http://157.245.245.234:5000/get_season_episodes/${movieId}/${id}`
+                `${APIURL}get_season_episodes/${movieId}/${id}`
             );
             console.log(response.data);
             setMovieSeasonEps(response.data);
