@@ -50,3 +50,11 @@
 .vjs-slider {
   height: 45px!important;
 }
+
+.spinner-border {
+  margin-top: 100px;
+}
+
+.alert-danger {
+  margin: 0 auto;
+}
